@@ -1,5 +1,8 @@
+#define NOMINMAX
 #include <iostream>
 #include <Windows.h>
+#include <string>
+#include <limits>
 
 /*void Plus(int *num)
 {
@@ -81,10 +84,12 @@ void DeleteArray(int*& arr, int& size)
 	arr = nullptr;
 }
 
+
+
 int main()
 {
-	SetConsoleCP(CP_UTF8);
-	SetConsoleOutputCP(CP_UTF8);
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251); //1251, CP_UTF8
 	srand(time(NULL));
 	/*int b = 10;
 	int a = 5;
@@ -160,13 +165,8 @@ int main()
 		arr[1][i] = new int[col2];
 
 	}*/
-
-
-	int size = 5;
-	int* ptr = nullptr;
-
-	
-
+	/*	int size = 5;
+	int* ptr = nullptr;*/
 	/*int size = 5;
 	int* name = new int[size] {3, 1, 2, 6, 9};
 
@@ -182,6 +182,162 @@ int main()
 		std::cout << name[i] << " ";
 	}
 	delete[] name;*/
+	/*	std::string name = "Hello world";
+	std::string one = "\nNew text " + name;
+	std::string* ptr = nullptr;
+	ptr = new std::string[5];
+	delete[] ptr;
+
+	std::string arr[5]{ "Apple", "Garlic", "Ivan", "Farit", "Cola"};
+
+	//auto lol = std::find(arr->begin(), arr->end(), "Ivan");
+
+	//name.erase(1);
+	std::cout << name << one;
+
+	std::string text1 = "Text";
+	std::string text2 = "Иван";
+
+	for (int i = 0; i < text1.size(); i++)
+	{
+		if (text1[i] == 'T')
+		{
+
+			std::cout << 't';
+		}
+		else
+		{
+
+			std::cout << text1[i];
+		}
+	}*/
+	/*std::string one;
+	int num = 0;
+		while (true)
+	{
+		system("cls");
+		//std::cin >> one;
+
+		std::getline(std::cin, one);
+		std::cout << one << std::endl;
+
+		std::getline(std::cin, one, 'u');
+		std::cout << one << std::endl;
+		//std::cin >> num;
+		//std::cout << num << std::endl;
+
+		//std::cin.ignore(32767, '\n'); //не самый лучший
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		system("pause");
+	}*/
+
+	std::string login = " ", login1;
+	std::string password = " ", password1;
+	std::string name;
+
+
+	std::cout << "What do you want to do?\n Login?\n Register?\n ";
+	std::getline(std::cin, name);
+	while (name == "Login" || name == "Register")
+	{ 
+		if (name == "Login" && login.size() <= 5 || login.size() >= 15 && password.size() <= 4 || password.size() >= 14)
+		{
+			while (true)
+			{
+				system("cls");
+				std::cout << "Enter your login: ";
+				std::getline(std::cin, login);
+				if (login.size() >= 5 && login.size() <= 15)
+				{
+					std::cout << std::endl;
+				}
+				else
+				{
+					while (login.size() <= 5 || login.size() >= 15)
+					{
+						std::cout << "Login must be between 5 and 15 characters long\n Enter your login: ";
+						std::getline(std::cin, login);
+					}
+				}
+				std::cout << "Enter your password: ";
+				std::getline(std::cin, password);
+				if (password.size() >= 5 && password.size() <= 15)
+				{
+					std::cout << std::endl;
+				}
+				else
+				{
+					while (password.size() <= 4 || password.size() >= 14)
+					{
+						std::cout << "password must be between 5 and 15 characters long\n Enter your password: ";
+						std::getline(std::cin, password);
+					}
+				}
+				break;
+			}
+			std::cout << "your login: " << login << std::endl << " your password: " << password;
+		}
+		else if (name == "Register")
+		{
+			while (true)
+			{
+				system("cls");
+				std::cout << "Enter your login: ";
+				std::getline(std::cin, login);
+				if (login1 == login)
+				{
+					std::cout << std::endl;
+				}
+				else
+				{
+					while (login1 == login)
+					{
+						std::cout << "Incorrect login or password\n Enter your login: ";
+						std::getline(std::cin, login);
+					}
+				}
+				std::cout << "Enter your password: ";
+				std::getline(std::cin, password);
+				if (password == password1)
+				{
+					std::cout << std::endl;
+				}
+				else
+				{
+					while (password == password1)
+					{
+						std::cout << "Incorrect login or password\n Enter your password: ";
+						std::getline(std::cin, password);
+					}
+				}
+				break;
+			}
+			std::cout << "You have successfully logged in";
+		}
+		else
+		{
+			while (true)
+			{
+				std::cout << "Incorrect input\n Login?\n Register?\n ";
+				std::getline(std::cin, name);
+				if (name != "Login" && name != "Register")
+				{
+					std::cout << "Incorrect\n";
+					system("pause");
+				}
+				else
+				{
+					break;
+				}
+				
+			}
+			
+			
+
+		}
+	}
+
 
 	return 0;
 }
